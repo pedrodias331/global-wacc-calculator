@@ -298,7 +298,7 @@ def compute(beta_u: float, rf_us: float, rf_local: float, erp: float, debt_share
     t = tax / 100.0
     beta_l = beta_u * (1.0 + (1.0 - t) * d / e)
     ke_us = rf_us + beta_l * erp / 100.0
-    ke_local = rf_local + beta_l * erp / 100.0
+    ke_local = (1 + ke_us) * (1 + rf_local) / (1 + rf_us) - 1
     kd_us = rf_us + spread_us / 100.0
     kd_local = rf_local + spread_local / 100.0
     return {
